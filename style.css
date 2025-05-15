@@ -1,39 +1,47 @@
-/* style.css */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins:wght@400;600&display=swap');
 
 body {
-  background-color: #f6f4ec; /* bege claro */
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #1c1c3a; /* texto escuro */
+  background-color: #faf6f2; /* bege muito suave */
+  font-family: 'Poppins', sans-serif;
+  color: #3a2c3a; /* tom escuro suave */
   text-align: center;
-  padding: 50px 20px;
+  padding: 60px 20px;
   margin: 0;
 }
 
 h1 {
-  color: #be1e59; /* rosa/vinho forte */
-  font-size: 3.5rem;
-  margin-bottom: 20px;
+  font-family: 'Playfair Display', serif;
+  color: #b63e6b; /* rosa/vinho suave */
+  font-size: 3.8rem;
+  margin-bottom: 15px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
 }
 
 p {
-  color: #1c1c3a; /* texto secundário escuro */
-  font-size: 1.2rem;
-  max-width: 600px;
-  margin: 0 auto 40px auto;
+  color: #5a4a5a; /* cinza arroxeado */
+  font-size: 1.3rem;
+  max-width: 550px;
+  margin: 0 auto 45px auto;
+  line-height: 1.5;
+  font-weight: 400;
 }
 
 button {
-  background-color: #be1e59; /* rosa/vinho */
-  color: white;
+  background-color: #b63e6b; /* rosa/vinho suave */
+  color: #fff;
   border: none;
-  border-radius: 12px;
-  padding: 15px 40px;
-  font-weight: bold;
-  font-size: 1.1rem;
+  border-radius: 16px;
+  padding: 18px 48px;
+  font-weight: 600;
+  font-size: 1.2rem;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  box-shadow: 0 8px 15px rgba(182, 62, 107, 0.3);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 button:hover {
-  background-color: #991846; /* rosa mais escuro no hover */
+  background-color: #8f2c50; /* tom mais escuro */
+  box-shadow: 0 12px 20px rgba(143, 44, 80, 0.5);
 }
+
