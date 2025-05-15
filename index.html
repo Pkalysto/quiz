@@ -2,130 +2,236 @@
 <html lang="pt">
 <head>
   <meta charset="UTF-8">
+  <title>Quiz para Rute</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <!-- outras tags que já tiveres -->
-</head>
+  <style>
+    /* Estilos do quiz */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #faf6f2;
+      color: #3a2c3a;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+    }
+    #start-page, #quiz-container {
+      width: 90%;
+      max-width: 420px;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(182, 62, 107, 0.15);
+      padding: 40px 30px;
+    }
+    #start-page .logo-text {
+      color: #b63e6b;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.8rem;
+      letter-spacing: 0.05em;
+      line-height: 1.1;
+      margin-bottom: 30px;
+    }
+    #start-page h1 {
+      font-family: 'Playfair Display', serif;
+      color: #b63e6b;
+      font-size: 3.5rem;
+      margin-bottom: 15px;
+      letter-spacing: 0.05em;
+    }
+    #start-page p {
+      font-size: 1.3rem;
+      color: #5a4a5a;
+      margin-bottom: 40px;
+      line-height: 1.5;
+    }
+    button {
+      background-color: #b63e6b;
+      color: #fff;
+      border: none;
+      border-radius: 16px;
+      padding: 16px 48px;
+      font-weight: 600;
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 8px 15px rgba(182, 62, 107, 0.3);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    button:hover {
+      background-color: #8f2c50;
+      box-shadow: 0 12px 20px rgba(143, 44, 80, 0.5);
+    }
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Quiz para Rute</title>
-<style>
-body {
-  font-family: Arial, sans-serif;
-  background: #f0f8ff;
-  color: #333;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  margin: 0;
-}
-#quiz-container {
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  padding: 20px;
-  width: 90%;
-  max-width: 400px;
-}
-.quiz-section {
-  display: none;
-}
-.quiz-section.active {
-  display: block;
-}
-h2 {
-  margin-bottom: 16px;
-  font-size: 1.2rem;
-}
-button {
-  margin: 8px 4px;
-  padding: 10px 16px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 1rem;
-}
-button:hover {
-  background: #e0e0e0;
-}
-.feedback {
-  margin-top: 12px;
-  font-weight: bold;
-  display: none;
-}
-.next-btn, #restart-btn {
-  display: none;
-  background: #4caf50;
-  color: #fff;
-}
-.next-btn.show, #restart-btn.show {
-  display: inline-block;
-}
-</style>
+    /* Quiz container inicialmente escondido */
+    #quiz-container {
+      display: none;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+    .quiz-section {
+      display: none;
+    }
+    .quiz-section.active {
+      display: block;
+    }
+    h2 {
+      margin-bottom: 20px;
+      font-family: 'Playfair Display', serif;
+      color: #b63e6b;
+      font-size: 1.6rem;
+    }
+    .answer-btn {
+      margin: 8px 4px;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 1rem;
+      background-color: #f0e6eb;
+      color: #3a2c3a;
+      transition: background-color 0.3s ease;
+    }
+    .answer-btn:hover {
+      background-color: #d8b8cc;
+    }
+    .feedback {
+      margin-top: 12px;
+      font-weight: 600;
+      display: none;
+      font-size: 1rem;
+    }
+    .feedback.correct {
+      color: #4caf50;
+    }
+    .feedback.wrong {
+      color: #e53935;
+    }
+    .next-btn, #restart-btn {
+      margin-top: 20px;
+      display: none;
+      background: #b63e6b;
+      color: #fff;
+      border-radius: 12px;
+      padding: 12px 32px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 8px 15px rgba(182, 62, 107, 0.3);
+      transition: background-color 0.3s ease;
+    }
+    .next-btn.show, #restart-btn.show {
+      display: inline-block;
+    }
+    .next-btn:hover, #restart-btn:hover {
+      background-color: #8f2c50;
+    }
+  </style>
 </head>
 <body>
-<div id="quiz-container">
-  <div class="quiz-section active" id="section-1">
-    <h2>No domingo, sabes quem estava com um outfit todo giro?</h2>
-    <button class="answer-btn" data-correct="false">Eu</button>
-    <button class="answer-btn" data-correct="true">Tu</button>
-    <p class="feedback correct">Acertaste! Estava mesmo a pensar em ti nesse dia 😉</p>
-    <p class="feedback wrong">Quase! Mas quem estava com o melhor look era... tu!</p>
-    <button class="next-btn">Seguinte</button>
+
+  <!-- Página inicial -->
+  <div id="start-page">
+    <div class="logo-text">
+      <span>no</span><br>
+      <span>question</span><br>
+      <span>yet</span>
+    </div>
+    <h1>Sabes quem?</h1>
+    <p>Este quiz foi criado especialmente para ti! 😄 Vê se acertas nas perguntas e prepara-te para umas surpresas no final!</p>
+    <button id="start-btn">LET’S GET QUIZZING!</button>
   </div>
-  <div class="quiz-section" id="section-2">
-    <h2>Quem tem os olhos de cachorrinho mais giros do mundo?</h2>
-    <button class="answer-btn" data-correct="false">Eu</button>
-    <button class="answer-btn" data-correct="true">Tu</button>
-    <p class="feedback correct">Sim, é isso! Os teus olhos são impossíveis de ignorar!</p>
-    <p class="feedback wrong">Tenta de novo... mas sim, era mesmo a ti!</p>
-    <button class="next-btn">Seguinte</button>
+
+  <!-- Quiz -->
+  <div id="quiz-container">
+    <div class="quiz-section active" id="section-1">
+      <h2>No domingo, sabes quem estava com um outfit todo giro?</h2>
+      <button class="answer-btn" data-correct="false">Eu</button>
+      <button class="answer-btn" data-correct="true">Tu</button>
+      <p class="feedback correct">Acertaste! Estava mesmo a pensar em ti nesse dia 😉</p>
+      <p class="feedback wrong">Quase! Mas quem estava com o melhor look era... tu!</p>
+      <button class="next-btn">Seguinte</button>
+    </div>
+    <div class="quiz-section" id="section-2">
+      <h2>Quem tem os olhos de cachorrinho mais giros do mundo?</h2>
+      <button class="answer-btn" data-correct="false">Eu</button>
+      <button class="answer-btn" data-correct="true">Tu</button>
+      <p class="feedback correct">Sim, é isso! Os teus olhos são impossíveis de ignorar!</p>
+      <p class="feedback wrong">Tenta de novo... mas sim, era mesmo a ti!</p>
+      <button class="next-btn">Seguinte</button>
+    </div>
+    <div class="quiz-section" id="section-3">
+      <h2>Sabes quem tem o sorriso mais encantador?</h2>
+      <button class="answer-btn" data-correct="false">Eu</button>
+      <button class="answer-btn" data-correct="true">Tu</button>
+      <p class="feedback correct">Sim! Estava a pensar em ti mesmo! 😄</p>
+      <p class="feedback wrong">Ainda assim... o sorriso mais brilhante é o teu!</p>
+      <button class="next-btn">Seguinte</button>
+    </div>
+    <div class="quiz-section" id="section-4">
+      <h2>Quem estava a brilhar mais no jogo de futebol do outro dia?</h2>
+      <button class="answer-btn" data-correct="false">Eu</button>
+      <button class="answer-btn" data-correct="true">Tu</button>
+      <p class="feedback correct">Acertaste, claro! Estavas incrível!</p>
+      <p class="feedback wrong">Hmm... quase! Mas sim, era mesmo tu quem estava a brilhar!</p>
+      <button class="next-btn">Ver Resultado</button>
+    </div>
+    <div class="quiz-section" id="section-final">
+      <h2>Acertaste em tudo (ou fingiste que não 😄)… Mas a resposta certa és sempre tu.</h2>
+      <button id="restart-btn">Recomeçar</button>
+    </div>
   </div>
-  <div class="quiz-section" id="section-3">
-    <h2>Sabes quem tem o sorriso mais encantador?</h2>
-    <button class="answer-btn" data-correct="false">Eu</button>
-    <button class="answer-btn" data-correct="true">Tu</button>
-    <p class="feedback correct">Sim! Estava a pensar em ti mesmo! 😄</p>
-    <p class="feedback wrong">Ainda assim... o sorriso mais brilhante é o teu!</p>
-    <button class="next-btn">Seguinte</button>
-  </div>
-  <div class="quiz-section" id="section-4">
-    <h2>Quem estava a brilhar mais no jogo de futebol do outro dia?</h2>
-    <button class="answer-btn" data-correct="false">Eu</button>
-    <button class="answer-btn" data-correct="true">Tu</button>
-    <p class="feedback correct">Acertaste, claro! Estavas incrível!</p>
-    <p class="feedback wrong">Hmm... quase! Mas sim, era mesmo tu quem estava a brilhar!</p>
-    <button class="next-btn">Ver Resultado</button>
-  </div>
-  <div class="quiz-section" id="section-final">
-    <h2>Acertaste em tudo (ou fingiste que não 😄)… Mas a resposta certa és sempre tu.</h2>
-    <button id="restart-btn">Recomeçar</button>
-  </div>
-</div>
-<script>
-const sections = document.querySelectorAll('.quiz-section');
-sections.forEach(section => {
-  const buttons = section.querySelectorAll('.answer-btn');
-  const nextBtn = section.querySelector('.next-btn') || section.querySelector('#restart-btn');
-  buttons.forEach(button => {
-    button.addEventListener('click', () => {
-      section.querySelectorAll('button').forEach(btn => btn.disabled = true);
-      section.querySelector('.correct').style.display = button.dataset.correct === 'true' ? 'block' : 'none';
-      section.querySelector('.wrong').style.display = button.dataset.correct === 'false' ? 'block' : 'none';
-      nextBtn.classList.add('show');
+
+  <script>
+    // Mostrar quiz e esconder página inicial ao clicar no botão
+    document.getElementById('start-btn').addEventListener('click', function() {
+      document.getElementById('start-page').style.display = 'none';
+      document.getElementById('quiz-container').style.display = 'block';
     });
-  });
-  nextBtn.addEventListener('click', () => {
-    section.classList.remove('active');
-    if (section.nextElementSibling) {
-      section.nextElementSibling.classList.add('active');
-    } else {
+
+    const sections = document.querySelectorAll('.quiz-section');
+    sections.forEach(section => {
+      const buttons = section.querySelectorAll('.answer-btn');
+      const nextBtn = section.querySelector('.next-btn') || section.querySelector('#restart-btn');
+      buttons.forEach(button => {
+        button.addEventListener('click', () => {
+          section.querySelectorAll('button').forEach(btn => btn.disabled = true);
+          section.querySelector('.correct').style.display = button.dataset.correct === 'true' ? 'block' : 'none';
+          section.querySelector('.wrong').style.display = button.dataset.correct === 'false' ? 'block' : 'none';
+          nextBtn.classList.add('show');
+        });
+      });
+      nextBtn.addEventListener('click', () => {
+        section.classList.remove('active');
+        if (section.nextElementSibling) {
+          section.nextElementSibling.classList.add('active');
+        } else {
+          sections[0].classList.add('active');
+        }
+      });
+    });
+
+    // Botão reiniciar
+    document.getElementById('restart-btn').addEventListener('click', () => {
+      sections.forEach(section => {
+        section.classList.remove('active');
+        section.querySelectorAll('button').forEach(btn => {
+          btn.disabled = false;
+        });
+        section.querySelectorAll('.feedback').forEach(fb => {
+          fb.style.display = 'none';
+        });
+        section.querySelector('.next-btn').classList.remove('show');
+      });
+      // Mostrar primeira pergunta
       sections[0].classList.add('active');
-    }
-  });
-});
-</script>
+      // Voltar para a página inicial antes do quiz
+      document.getElementById('quiz-container').style.display = 'none';
+      document.getElementById('start-page').style.display = 'block';
+    });
+  </script>
+
 </body>
 </html>
