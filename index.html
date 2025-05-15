@@ -4,14 +4,15 @@
   <meta charset="UTF-8" />
   <title>Quiz para Rute</title>
   <link
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Playfair+Display&display=swap" rel="stylesheet" />
+    href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Playfair+Display&display=swap"
     rel="stylesheet"
   />
   <style>
+    /* Import das fontes e estilos gerais */
     body {
-      font-family: "Poppins", sans-serif;
-      background: #faf6f2;
-      color: #3a2c3a;
+      font-family: "Playfair Display", serif;
+      background: #faf0f0; /* tom suave rosado */
+      color: #4b2e3b; /* vinho suave */
       margin: 0;
       padding: 0;
       display: flex;
@@ -24,50 +25,52 @@
     #quiz-container {
       width: 90%;
       max-width: 420px;
-      background: #fff;
+      background: #fff0f5; /* rosa bem suave */
       border-radius: 16px;
-      box-shadow: 0 8px 20px rgba(182, 62, 107, 0.15);
+      box-shadow: 0 8px 20px rgba(166, 77, 121, 0.25);
       padding: 40px 30px;
     }
     #start-page .logo-text {
-      color: #b63e6b;
-      font-family: "Playfair Display", serif;
+      color: #8b3a56;
+      font-family: "Dancing Script", cursive;
       font-weight: 700;
       font-size: 1.8rem;
       letter-spacing: 0.05em;
       line-height: 1.1;
       margin-bottom: 30px;
     }
-    #start-page h1 {
-      font-family: "Playfair Display", serif;
-      color: #b63e6b;
+    #start-page h1,
+    h2 {
+      font-family: "Dancing Script", cursive;
+      font-weight: 700;
+      color: #8b3a56;
       font-size: 3.5rem;
       margin-bottom: 15px;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.06em;
     }
-    #start-page p {
+    #start-page p,
+    button,
+    .feedback {
+      font-family: "Playfair Display", serif;
+      color: #5e3a47;
       font-size: 1.3rem;
-      color: #5a4a5a;
-      margin-bottom: 40px;
       line-height: 1.5;
     }
     button {
-      background-color: #b63e6b;
-      color: #fff;
-      border: none;
-      border-radius: 16px;
-      padding: 16px 48px;
-      font-weight: 600;
-      font-size: 1.2rem;
+      background-color: #a64d79;
+      border-radius: 20px;
+      padding: 18px 52px;
+      font-weight: 700;
+      font-size: 1.3rem;
       cursor: pointer;
-      box-shadow: 0 8px 15px rgba(182, 62, 107, 0.3);
-      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 10px 20px rgba(166, 77, 121, 0.4);
+      transition: background-color 0.4s ease, box-shadow 0.4s ease;
+      border: none;
     }
     button:hover {
-      background-color: #8f2c50;
-      box-shadow: 0 12px 20px rgba(143, 44, 80, 0.5);
+      background-color: #7a355a;
+      box-shadow: 0 14px 28px rgba(122, 53, 90, 0.6);
     }
-
     #quiz-container {
       display: none;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
@@ -78,31 +81,26 @@
     .quiz-section.active {
       display: block;
     }
-    h2 {
-      margin-bottom: 20px;
-      font-family: "Playfair Display", serif;
-      color: #b63e6b;
-      font-size: 1.6rem;
-    }
     .answer-btn {
       margin: 8px 4px;
       padding: 12px 20px;
       border: none;
-      border-radius: 12px;
+      border-radius: 16px;
       cursor: pointer;
-      font-size: 1rem;
-      background-color: #f0e6eb;
-      color: #3a2c3a;
+      font-size: 1.1rem;
+      background-color: #f7e9f0;
+      color: #4b2e3b;
       transition: background-color 0.3s ease;
+      font-family: "Playfair Display", serif;
     }
     .answer-btn:hover {
-      background-color: #d8b8cc;
+      background-color: #dcb9d6;
     }
     .feedback {
       margin-top: 12px;
       font-weight: 600;
       display: none;
-      font-size: 1rem;
+      font-size: 1.1rem;
     }
     .feedback.correct {
       color: #4caf50;
@@ -114,15 +112,16 @@
     #restart-btn {
       margin-top: 20px;
       display: none;
-      background: #b63e6b;
+      background: #a64d79;
       color: #fff;
-      border-radius: 12px;
-      padding: 12px 32px;
-      font-weight: 600;
-      font-size: 1rem;
+      border-radius: 20px;
+      padding: 14px 40px;
+      font-weight: 700;
+      font-size: 1.2rem;
       cursor: pointer;
-      box-shadow: 0 8px 15px rgba(182, 62, 107, 0.3);
-      transition: background-color 0.3s ease;
+      box-shadow: 0 10px 20px rgba(166, 77, 121, 0.4);
+      transition: background-color 0.4s ease, box-shadow 0.4s ease;
+      border: none;
     }
     .next-btn.show,
     #restart-btn.show {
@@ -130,7 +129,27 @@
     }
     .next-btn:hover,
     #restart-btn:hover {
-      background-color: #8f2c50;
+      background-color: #7a355a;
+      box-shadow: 0 14px 28px rgba(122, 53, 90, 0.6);
+    }
+    /* Surpresa final */
+    #surprise {
+      margin-top: 20px;
+      font-size: 1.4rem;
+      color: #a64d79;
+      display: none;
+      animation: pulse 1.5s infinite alternate;
+      font-family: "Dancing Script", cursive;
+    }
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        opacity: 0.8;
+      }
+      100% {
+        transform: scale(1.1);
+        opacity: 1;
+      }
     }
   </style>
 </head>
@@ -192,6 +211,9 @@
     </div>
     <div class="quiz-section" id="section-final">
       <h2>Acertaste em tudo (ou fingiste que não 😄)… Mas a resposta certa és sempre tu.</h2>
+      <div id="surprise">
+        💖 És simplesmente incrível! Obrigado por participares! 💖
+      </div>
       <button id="restart-btn">Recomeçar</button>
     </div>
   </div>
@@ -229,13 +251,20 @@
         // Esconde a secção atual
         section.classList.remove("active");
 
-        // Mostra próxima secção ou reinicia
         if (index + 1 < sections.length) {
           sections[index + 1].classList.add("active");
+
+          // Se for a última secção, mostra a surpresa
+          if (sections[index + 1].id === "section-final") {
+            document.getElementById("surprise").style.display = "block";
+          } else {
+            document.getElementById("surprise").style.display = "none";
+          }
         } else {
           // Voltar ao início
           document.getElementById("quiz-container").style.display = "none";
           document.getElementById("start-page").style.display = "block";
+          document.getElementById("surprise").style.display = "none";
 
           // Reset quiz
           sections.forEach((s) => {
@@ -252,8 +281,3 @@
   </script>
 </body>
 </html>
-
-
-</body>
-</html>
-
