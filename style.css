@@ -1,7 +1,10 @@
+/* Import das fontes Google */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Playfair+Display&display=swap');
+
 body {
-  font-family: "Poppins", sans-serif;
-  background: #faf6f2;
-  color: #3a2c3a;
+  font-family: 'Playfair Display', serif;
+  background: #faf0f0; /* tom suave rosado */
+  color: #4b2e3b; /* vinho suave */
   margin: 0;
   padding: 0;
   display: flex;
@@ -10,115 +13,38 @@ body {
   min-height: 100vh;
   text-align: center;
 }
+
 #start-page,
 #quiz-container {
   width: 90%;
   max-width: 420px;
-  background: #fff;
+  background: #fff0f5; /* rosa bem suave */
   border-radius: 16px;
-  box-shadow: 0 8px 20px rgba(182, 62, 107, 0.15);
+  box-shadow: 0 8px 20px rgba(166, 77, 121, 0.25);
   padding: 40px 30px;
 }
+
 #start-page .logo-text {
-  color: #b63e6b;
-  font-family: "Playfair Display", serif;
+  color: #8b3a56;
+  font-family: 'Dancing Script', cursive;
   font-weight: 700;
   font-size: 1.8rem;
   letter-spacing: 0.05em;
   line-height: 1.1;
   margin-bottom: 30px;
 }
-#start-page h1 {
-  font-family: "Playfair Display", serif;
-  color: #b63e6b;
+
+#start-page h1,
+h2 {
+  font-family: 'Dancing Script', cursive;
+  font-weight: 700;
+  color: #8b3a56;
   font-size: 3.5rem;
   margin-bottom: 15px;
-  letter-spacing: 0.05em;
-}
-#start-page p {
-  font-size: 1.3rem;
-  color: #5a4a5a;
-  margin-bottom: 40px;
-  line-height: 1.5;
-}
-button {
-  background-color: #b63e6b;
-  color: #fff;
-  border: none;
-  border-radius: 16px;
-  padding: 16px 48px;
-  font-weight: 600;
-  font-size: 1.2rem;
-  cursor: pointer;
-  box-shadow: 0 8px 15px rgba(182, 62, 107, 0.3);
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-}
-button:hover {
-  background-color: #8f2c50;
-  box-shadow: 0 12px 20px rgba(143, 44, 80, 0.5);
-}
-#quiz-container {
-  display: none;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-}
-.quiz-section {
-  display: none;
-}
-.quiz-section.active {
-  display: block;
-}
-h2 {
-  margin-bottom: 20px;
-  font-family: "Playfair Display", serif;
-  color: #b63e6b;
-  font-size: 1.6rem;
-}
-.answer-btn {
-  margin: 8px 4px;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  font-size: 1rem;
-  background-color: #f0e6eb;
-  color: #3a2c3a;
-  transition: background-color 0.3s ease;
-}
-.answer-btn:hover {
-  background-color: #d8b8cc;
-}
-.feedback {
-  margin-top: 12px;
-  font-weight: 600;
-  display: none;
-  font-size: 1rem;
-}
-.feedback.correct {
-  color: #4caf50;
-}
-.feedback.wrong {
-  color: #e53935;
-}
-.next-btn,
-#restart-btn {
-  margin-top: 20px;
-  display: none;
-  background: #b63e6b;
-  color: #fff;
-  border-radius: 12px;
-  padding: 12px 32px;
-  font-weight: 600;
-  font-size: 1rem;
-  cursor: pointer;
-  box-shadow: 0 8px 15px rgba(182, 62, 107, 0.3);
-  transition: background-color 0.3s ease;
-}
-.next-btn.show,
-#restart-btn.show {
-  display: inline-block;
-}
-.next-btn:hover,
-#restart-btn:hover {
-  background-color: #8f2c50;
+  letter-spacing: 0.06em;
 }
 
+#start-page p,
+button,
+.feedback {
+  font-family: 'Playfair Display',
