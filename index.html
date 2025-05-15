@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz para Rute</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #f0f8ff;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+#quiz-container {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 20px;
+  width: 90%;
+  max-width: 400px;
+}
+.quiz-section {
+  display: none;
+}
+.quiz-section.active {
+  display: block;
+}
+h2 {
+  margin-bottom: 16px;
+  font-size: 1.2rem;
+}
+button {
+  margin: 8px 4px;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+button:hover {
+  background: #e0e0e0;
+}
+.feedback {
+  margin-top: 12px;
+  font-weight: bold;
+  display: none;
+}
+.next-btn, #restart-btn {
+  display: none;
+  background: #4caf50;
+  color: #fff;
+}
+.next-btn.show, #restart-btn.show {
+  display: inline-block;
+}
+</style>
+</head>
+<body>
+<div id="quiz-container">
+  <div class="quiz-section active" id="section-1">
+    <h2>No domingo, sabes quem estava com um outfit todo giro?</h2>
+    <button class="answer-btn" data-correct="false">Eu</button>
+    <button class="answer-btn" data-correct="true">Tu</button>
+    <p class="feedback correct">Acertaste! Estava mesmo a pensar em ti nesse dia 😉</p>
+    <p class="feedback wrong">Quase! Mas quem estava com o melhor look era... tu!</p>
+    <button class="next-btn">Seguinte</button>
+  </div>
+  <div class="quiz-section" id="section-2">
+    <h2>Quem tem os olhos de cachorrinho mais giros do mundo?</h2>
+    <button class="answer-btn" data-correct="false">Eu</button>
+    <button class="answer-btn" data-correct="true">Tu</button>
+    <p class="feedback correct">Sim, é isso! Os teus olhos são impossíveis de ignorar!</p>
+    <p class="feedback wrong">Tenta de novo... mas sim, era mesmo a ti!</p>
+    <button class="next-btn">Seguinte</button>
+  </div>
+  <div class="quiz-section" id="section-3">
+    <h2>Sabes quem tem o sorriso mais encantador?</h2>
+    <button class="answer-btn" data-correct="false">Eu</button>
+    <button class="answer-btn" data-correct="true">Tu</button>
+    <p class="feedback correct">Sim! Estava a pensar em ti mesmo! 😄</p>
+    <p class="feedback wrong">Ainda assim... o sorriso mais brilhante é o teu!</p>
+    <button class="next-btn">Seguinte</button>
+  </div>
+  <div class="quiz-section" id="section-4">
+    <h2>Quem estava a brilhar mais no jogo de futebol do outro dia?</h2>
+    <button class="answer-btn" data-correct="false">Eu</button>
+    <button class="answer-btn" data-correct="true">Tu</button>
+    <p class="feedback correct">Acertaste, claro! Estavas incrível!</p>
+    <p class="feedback wrong">Hmm... quase! Mas sim, era mesmo tu quem estava a brilhar!</p>
+    <button class="next-btn">Ver Resultado</button>
+  </div>
+  <div class="quiz-section" id="section-final">
+    <h2>Acertaste em tudo (ou fingiste que não 😄)… Mas a resposta certa és sempre tu.</h2>
+    <button id="restart-btn">Recomeçar</button>
+  </div>
+</div>
+<script>
+const sections = document.querySelectorAll('.quiz-section');
+sections.forEach(section => {
+  const buttons = section.querySelectorAll('.answer-btn');
+  const nextBtn = section.querySelector('.next-btn') || section.querySelector('#restart-btn');
+  buttons.forEach(button => {
+    button.addEventListener('click', () => {
+      section.querySelectorAll('button').forEach(btn => btn.disabled = true);
+      section.querySelector('.correct').style.display = button.dataset.correct === 'true' ? 'block' : 'none';
+      section.querySelector('.wrong').style.display = button.dataset.correct === 'false' ? 'block' : 'none';
+      nextBtn.classList.add('show');
+    });
+  });
+  nextBtn.addEventListener('click', () => {
+    section.classList.remove('active');
+    if (section.nextElementSibling) {
+      section.nextElementSibling.classList.add('active');
+    } else {
+      sections[0].classList.add('active');
+    }
+  });
+});
+</script>
+</body>
+</html>
