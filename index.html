@@ -2,33 +2,33 @@
 <html lang="pt">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Quiz para Rute</title>
   <link
-    href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Playfair+Display&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Playfair+Display&family=Poppins:wght@400;700&display=swap"
     rel="stylesheet"
   />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <!-- Página inicial -->
-  <div id="start-page">
+  <div id="start-page" class="fade-in">
     <div class="logo-text">
       <span>no</span><br />
       <span>question</span><br />
       <span>yet</span>
     </div>
     <h1>Sabes quem?</h1>
-    <p>Um quiz muito especial, feito só para ti, Rute.</p>
+    <p>Um quiz ainda mais especial, pensado para te encantar, Rute.</p>
     <p>
-      Este quiz foi criado especialmente para ti! 😄 Vê se acertas nas perguntas
-      e prepara-te para umas surpresas no final!
+      Cada pergunta aproxima-te de uma surpresa irresistível. Preparada para jogar?
     </p>
-    <button id="start-btn">LET’S GET QUIZZING!</button>
+    <button id="start-btn">COMEÇAR A SURPRESA!</button>
   </div>
 
   <!-- Quiz -->
-  <div id="quiz-container">
-    <div class="quiz-section active" id="section-1">
+  <div id="quiz-container" class="fade-in">
+    <div class="quiz-section active fade-in" id="section-1">
       <h2>No domingo, sabes quem estava com um outfit todo giro?</h2>
       <button class="answer-btn" data-correct="false">Eu</button>
       <button class="answer-btn" data-correct="true">Tu</button>
@@ -38,7 +38,7 @@
       <p class="feedback wrong">Quase! Mas quem estava com o melhor look era... tu!</p>
       <button class="next-btn">Seguinte</button>
     </div>
-    <div class="quiz-section" id="section-2">
+    <div class="quiz-section fade-in" id="section-2">
       <h2>Quem tem os olhos de cachorrinho mais giros do mundo?</h2>
       <button class="answer-btn" data-correct="false">Eu</button>
       <button class="answer-btn" data-correct="true">Tu</button>
@@ -48,7 +48,7 @@
       <p class="feedback wrong">Tenta de novo... mas sim, era mesmo a ti!</p>
       <button class="next-btn">Seguinte</button>
     </div>
-    <div class="quiz-section" id="section-3">
+    <div class="quiz-section fade-in" id="section-3">
       <h2>Sabes quem tem o sorriso mais encantador?</h2>
       <button class="answer-btn" data-correct="false">Eu</button>
       <button class="answer-btn" data-correct="true">Tu</button>
@@ -56,7 +56,7 @@
       <p class="feedback wrong">Ainda assim... o sorriso mais brilhante é o teu!</p>
       <button class="next-btn">Seguinte</button>
     </div>
-    <div class="quiz-section" id="section-4">
+    <div class="quiz-section fade-in" id="section-4">
       <h2>Quem estava a brilhar mais no jogo de futebol do outro dia?</h2>
       <button class="answer-btn" data-correct="false">Eu</button>
       <button class="answer-btn" data-correct="true">Tu</button>
@@ -66,10 +66,10 @@
       </p>
       <button class="next-btn">Ver Resultado</button>
     </div>
-    <div class="quiz-section" id="section-final">
+    <div class="quiz-section fade-in" id="section-final">
       <h2>Acertaste em tudo (ou fingiste que não 😄)… Mas a resposta certa és sempre tu.</h2>
       <div id="surprise">
-        Obrigado por participares, foi um prazer fazer este quiz para ti, Rute. 💖
+        Obrigado por jogares! Que tal repetirmos esta diversão a dois? 💖
       </div>
       <button id="restart-btn">Recomeçar</button>
     </div>

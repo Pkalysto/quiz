@@ -1,9 +1,9 @@
 /* Import das fontes Google */
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Playfair+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Playfair+Display&family=Poppins:wght@400;700&display=swap');
 
 body {
-  font-family: 'Playfair Display', serif;
-  background: #faf0f0; /* tom suave rosado */
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #ffe8f4, #f7b5d7);
   color: #4b2e3b; /* vinho suave */
   margin: 0;
   padding: 0;
@@ -18,10 +18,11 @@ body {
 #quiz-container {
   width: 90%;
   max-width: 420px;
-  background: #fff0f5; /* rosa bem suave */
+  background: rgba(255, 240, 245, 0.9);
   border-radius: 16px;
   box-shadow: 0 8px 20px rgba(166, 77, 121, 0.25);
   padding: 40px 30px;
+  backdrop-filter: blur(5px);
 }
 
 #start-page .logo-text {
@@ -32,6 +33,7 @@ body {
   letter-spacing: 0.05em;
   line-height: 1.1;
   margin-bottom: 30px;
+  animation: fadeIn 1s ease forwards;
 }
 
 #start-page h1,
@@ -68,6 +70,7 @@ button {
 button:hover {
   background-color: #7a355a;
   box-shadow: 0 14px 28px rgba(122, 53, 90, 0.6);
+  transform: scale(1.05);
 }
 
 #quiz-container {
@@ -140,6 +143,7 @@ button:hover {
 #restart-btn:hover {
   background-color: #7a355a;
   box-shadow: 0 14px 28px rgba(122, 53, 90, 0.6);
+  transform: scale(1.05);
 }
 
 /* Surpresa final */
@@ -161,4 +165,19 @@ button:hover {
     transform: scale(1.1);
     opacity: 1;
   }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.8s ease forwards;
 }
